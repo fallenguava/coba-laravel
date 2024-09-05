@@ -45,6 +45,39 @@ class EmployeeController extends Controller {
 
         return view('employeedata', compact('title', 'itEmployees', 'hrEmployees', 'financeEmployees'));
     }
-    
+
+    public function edit($id)
+    {
+        // Fetch employee data
+        $title = 'Employee Data';
+        $employee = DB::table('it_employees')->where('id', $id)->first(); // Adjust based on division logic
+        return view('edit_employee', compact('title', 'employee'));
+    }
+
+    public function destroy($id)
+    {
+        // Delete employee data
+        DB::table('it_employees')->where('id', $id)->delete(); // Adjust based on division logic
+        return redirect()->route('employee.data')->with('success', 'Employee deleted successfully!');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $table = strtolower($request->input('division')) . '_employees'; // Adjust this logic if needed
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'dob' => 'required|date',
+            'email' => 'required|email|unique:' . $table . ',email,' . $id,
+            'phone_number' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'hired_date' => 'required|date',
+            'salary' => 'required|numeric',
+        ]);
+
+        DB::table($table)->where('id', $id)->update($validatedData);
+
+        return redirect()->route('employee.data')->with('success', 'Employee updated successfully!');
+    }
 
 }

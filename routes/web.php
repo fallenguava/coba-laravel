@@ -31,6 +31,9 @@ Route::middleware('auth')->group(function () {
     // });
 
     Route::get('/employeedata', [EmployeeController::class, 'showEmployeeData'])->name('employee.data');
+    Route::get('/employee/{id}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
+    Route::delete('/employee/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
+    Route::put('/employee/{id}', [EmployeeController::class, 'update'])->name('employee.update');
 
     Route::get('/about', function () {
         return view('about', [
