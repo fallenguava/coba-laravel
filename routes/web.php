@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\PostController;
 
 
 
@@ -57,6 +58,9 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('blog/{slug}', [PostController::class, 'show']);
+
+    Route::post('/employee/store', [EmployeeController::class, 'store'])->name('employee.store');
+
 
 
 
