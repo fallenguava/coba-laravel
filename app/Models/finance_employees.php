@@ -25,7 +25,7 @@ class CreateFinanceEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('it_employees', function (Blueprint $table) {
+        Schema::create('finance_employees', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->date('dob');  // Date of Birth

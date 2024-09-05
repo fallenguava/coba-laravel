@@ -25,7 +25,7 @@ class CreateHrEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('it_employees', function (Blueprint $table) {
+        Schema::create('hr_employees', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->date('dob');  // Date of Birth

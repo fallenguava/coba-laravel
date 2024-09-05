@@ -1,6 +1,13 @@
 <?php
 
-public function store(Request $request)
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class EmployeeController extends Controller {
+
+    public function store(Request $request)
 {
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
@@ -28,4 +35,6 @@ public function store(Request $request)
     ]);
 
     return redirect()->back()->with('success', 'Employee added successfully!');
+}
+
 }
