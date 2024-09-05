@@ -35,6 +35,16 @@ class EmployeeController extends Controller {
     
         return redirect()->back()->with('success', 'Employee added successfully!');
     }
+
+    public function showEmployeeData()
+    {
+        $title = 'Employee Data';
+        $itEmployees = DB::table('it_employees')->get();
+        $hrEmployees = DB::table('hr_employees')->get();
+        $financeEmployees = DB::table('finance_employees')->get();
+
+        return view('employeedata', compact('title', 'itEmployees', 'hrEmployees', 'financeEmployees'));
+    }
     
 
 }

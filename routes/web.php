@@ -24,11 +24,13 @@ Route::middleware('auth')->group(function () {
         ]);
     });
 
-    Route::get('/employeedata', function() {
-        return view('employeedata', [
-            'title' => 'Employee Data'
-        ]);
-    });
+    // Route::get('/employeedata', function() {
+    //     return view('employeedata', [
+    //         'title' => 'Employee Data'
+    //     ]);
+    // });
+
+    Route::get('/employeedata', [EmployeeController::class, 'showEmployeeData'])->name('employee.data');
 
     Route::get('/about', function () {
         return view('about', [
