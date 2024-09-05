@@ -24,6 +24,12 @@ Route::middleware('auth')->group(function () {
         ]);
     });
 
+    Route::get('/employeedata', function() {
+        return view('employeedata', [
+            'title' => 'Employee Data'
+        ]);
+    });
+
     Route::get('/about', function () {
         return view('about', [
             'title' => "about"

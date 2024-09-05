@@ -14,7 +14,6 @@
     @yield('container')
     </div>
 
-    @include('partials.employeeform')
 
 
 
