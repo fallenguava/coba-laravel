@@ -3,7 +3,7 @@
 
 
 @section('container')
-    <h1>HomePage</h1>
+    <h1>Add Employee</h1>
     @include('partials.employeeform')
 @endsection
 

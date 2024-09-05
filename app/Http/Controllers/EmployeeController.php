@@ -48,18 +48,42 @@ class EmployeeController extends Controller {
 
     public function edit($id)
     {
-        // Fetch employee data
-        $title = 'Employee Data';
-        $employee = DB::table('it_employees')->where('id', $id)->first(); // Adjust based on division logic
-        return view('edit_employee', compact('title', 'employee'));
+        // Fetch employee data to determine division
+        $employee = DB::table('it_employees')->where('id', $id)->first();
+        if (!$employee) {
+            $employee = DB::table('hr_employees')->where('id', $id)->first();
+        }
+        if (!$employee) {
+            $employee = DB::table('finance_employees')->where('id', $id)->first();
+        }
+
+        if ($employee) {
+            $title = 'Employee Data';
+            return view('edit_employee', compact('title', 'employee'));
+        }
+
+        return redirect()->route('employee.data')->with('error', 'Employee not found!');
     }
+
 
     public function destroy($id)
     {
-        // Delete employee data
-        DB::table('it_employees')->where('id', $id)->delete(); // Adjust based on division logic
-        return redirect()->route('employee.data')->with('success', 'Employee deleted successfully!');
+        // Attempt to delete from all division tables
+        $deleted = DB::table('it_employees')->where('id', $id)->delete();
+        if (!$deleted) {
+            $deleted = DB::table('hr_employees')->where('id', $id)->delete();
+        }
+        if (!$deleted) {
+            $deleted = DB::table('finance_employees')->where('id', $id)->delete();
+        }
+
+        if ($deleted) {
+            return redirect()->route('employee.data')->with('success', 'Employee deleted successfully!');
+        }
+
+        return redirect()->route('employee.data')->with('error', 'Employee not found!');
     }
+
 
     public function update(Request $request, $id)
     {
