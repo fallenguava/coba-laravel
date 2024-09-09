@@ -108,13 +108,13 @@ class EmployeeController extends Controller {
     }
 
 
-    public function exportPdf()
-    {
-        $employees = DB::table('it_employees')->get(); // Adjust for all divisions
+    // public function exportPdf()
+    // {
+    //     $employees = DB::table('it_employees')->get(); // Adjust for all divisions
 
-        $pdf = PDF::loadView('employees_pdf', compact('employees'));
-        return $pdf->download('employees.pdf');
-    }
+    //     $pdf = PDF::loadView('employees_pdf', compact('employees'));
+    //     return $pdf->download('employees.pdf');
+    // }
 
 
 }

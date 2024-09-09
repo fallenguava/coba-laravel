@@ -125,14 +125,14 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-    // DomPDF
-    'providers' => [
-        Barryvdh\DomPDF\ServiceProvider::class,
-    ],
+    // // DomPDF
+    // 'providers' => [
+    //     Barryvdh\DomPDF\ServiceProvider::class,
+    // ],
 
-    'aliases' => [
-        'PDF' => Barryvdh\DomPDF\Facade::class,
-    ],
+    // 'aliases' => [
+    //     'PDF' => Barryvdh\DomPDF\Facade::class,
+    // ],
 
 
 

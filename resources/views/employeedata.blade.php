@@ -5,7 +5,7 @@
 <h1></h1>
 <h1></h1>
 <a href="/home" class="btn btn-primary mb-3">Add Employee</a> <!-- Added 'mb-3' class for margin-bottom -->
-<a href="{{ route('export.pdf') }}" class="btn btn-primary">Export to PDF</a>
+<a href="{{ route('export.pdf') }}" class="btn btn-primary mb-3">Export to PDF</a>
 
 
 <ul class="nav nav-tabs" id="divisionTabs" role="tablist">
