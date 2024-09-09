@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+
 
 class EmployeeController extends Controller {
 
@@ -103,5 +106,15 @@ class EmployeeController extends Controller {
 
         return redirect()->route('employee.data')->with('success', 'Employee updated successfully!');
     }
+
+
+    public function exportPdf()
+    {
+        $employees = DB::table('it_employees')->get(); // Adjust for all divisions
+
+        $pdf = PDF::loadView('employees_pdf', compact('employees'));
+        return $pdf->download('employees.pdf');
+    }
+
 
 }

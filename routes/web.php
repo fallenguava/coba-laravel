@@ -55,4 +55,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('blog/{slug}', [PostController::class, 'show']);
     Route::post('/employee/store', [EmployeeController::class, 'store'])->name('employee.store');
+    Route::get('/export-pdf', [EmployeeController::class, 'exportPdf'])->name('export.pdf');
+
 });
